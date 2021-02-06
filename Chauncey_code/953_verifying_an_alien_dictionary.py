@@ -13,7 +13,7 @@ class Solution:
             if s1[i] != s2[i]:
                 if order.find(s1[i]) > order.find(s2[i]):
                     return False
-                break
+                return True
         else:
             if len(s1) > len(s2):
                 return False
