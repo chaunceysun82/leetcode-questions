@@ -14,9 +14,9 @@ class Solution:
                 if order.find(s1[i]) > order.find(s2[i]):
                     return False
                 return True
-        else:
-            if len(s1) > len(s2):
-                return False
+
+        if len(s1) > len(s2):
+            return False
 
         return True
 
