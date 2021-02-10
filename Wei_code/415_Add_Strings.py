@@ -23,3 +23,9 @@ class Solution:
         sum = number1 + number2
         
         return str(sum)
+
+if __name__ == '__main__':
+    obj = Solution()
+    num1 = '23423'
+    num2 = '982332'
+    print(obj.addStrings(num1, num2))
