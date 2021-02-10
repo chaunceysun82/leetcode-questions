@@ -1,13 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        dict = {")": "(", "}": "{", "]": "["}
+        
         stack = []
+        
         for ch in s:
-            if ch == '(' or ch == '[' or ch == '{':
-                stack.append(ch)
+            if ch in dict:
+                if stack ==[]:
+                    return False
+                if dict[ch] == stack[-1]:
+                    stack.pop()
+                else:
+                    stack.append(ch)
             else:
-                if not stack:
-                    return False
-                if ch == ']' and stack[-1] != '[' or ch == ')' and stack[-1] != '(' or ch == '}' and stack[-1] != '{':
-                    return False
-                stack.pop()
+                stack.append(ch)
+                
         return not stack
