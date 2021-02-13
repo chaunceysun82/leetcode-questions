@@ -4,7 +4,7 @@ class Solution:
         # Space: O(n)
 
         dict = {}
-        for string in cpdomains: 
+        for string in cpdomains:
             count, cpdomain = string.split(' ', 1)
             domain_list = self.get_domains_list(cpdomain)
 
