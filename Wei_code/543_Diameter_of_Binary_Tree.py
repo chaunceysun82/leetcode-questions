@@ -16,6 +16,7 @@ class Solution:
             left = dfs(node.left)
             
             max_d[0] = max(max_d[0], left + right + 2)
+            height = max(left, right) + 1
             return max(left, right) + 1
             
         dfs(root)
