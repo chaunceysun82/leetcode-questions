@@ -6,26 +6,18 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
-
         if not s:
             return False
-
-        if s.val == t.val and self.is_identical(s, t): 
+        return self.isSametree(s,t) or self.isSubtree(s.left,t) or self.isSubtree(s.right,t)
+    
+    
+    def isSametree(self, root1, root2):
+        if root1 is None and root2 is None:
             return True
-
-        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
-
-
-    def is_identical(self, root1, root2):
-        if not root1 and not root2:
-            return True
-
-        if not root1 or not root2:
+        elif root1 is None or root2 is None:
             return False
-
+        
         if root1.val != root2.val:
             return False
-
-        return self.is_identical(root1.left, root2.left) and self.is_identical(root1.right, root2.right)
-
-
+        
+        return self.isSametree(root1.right, root2.right) and self.isSametree(root1.left,root2.left)
