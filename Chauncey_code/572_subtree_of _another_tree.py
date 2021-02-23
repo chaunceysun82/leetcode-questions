@@ -10,7 +10,7 @@ class Solution:
         if not s:
             return False
 
-        if s.val == t.val and self.is_identical(s, t):
+        if s.val == t.val and self.is_identical(s, t): 
             return True
 
         return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
