@@ -14,7 +14,7 @@ class Solution:
         self.invertTree(root.left)
         self.invertTree(root.right)
         
-        return root"""
+        return root
 
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
@@ -27,4 +27,24 @@ class Solution:
         root.left = left
         root.right = right
         
+        return root"""
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        from queue import Queue
+        
+        if not root:
+            return None
+            
+        que = Queue()
+        que.put(root)
+        
+        while not que.empty():
+            cur = que.get()
+            cur.left, cur.right = cur.right, cur.left
+            if cur.left:
+                que.put(cur.left)
+            if cur.right:
+                que.put(cur.right)
+                
         return root
