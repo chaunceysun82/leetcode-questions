@@ -1,19 +1,24 @@
+# BFS version Brute Force
+
 from collections import deque
 class Solution:
     def generateParenthesis(self, n):
 
         output = []
-        queue = deque([''])
+        queue = ['']
         index = 0
 
-        while index < 2 ** (n * 2) - 1:
-            subset = queue.popleft()
+        while index < len(queue):
+            subset = queue[index]
             index += 1
             for c in ['(', ')']:
                 new_subset = subset + c
                 queue.append(new_subset)
-                if len(new_subset) == 6 and self.is_valid(new_subset):
+                if len(new_subset) == n * 2 and self.is_valid(new_subset):
                     output.append(new_subset)
+
+            if len(new_subset) > n * 2:
+                break
 
         return output
 
@@ -29,6 +34,34 @@ class Solution:
         return len(stack) == 0
 
 
-obj = Solution()
+# obj = Solution()
+# n = 3
+# print(obj.generateParenthesis(n))
+
+
+# DFS version check valid during recursion
+
+class Solution2:
+    def generateParenthesis(self, n):
+        results = []
+        self.dfs(0, 0, '', n, results)
+        return results
+
+
+    def dfs(self, left_count, right_count, subseq, n, results):
+        if left_count > n or right_count > n:
+            return
+
+        if left_count < right_count:
+            return
+
+        if left_count == n and right_count == n:
+            results.append(subseq)
+
+        self.dfs(left_count + 1, right_count, subseq + '(', n, results)
+        self.dfs(left_count, right_count + 1, subseq + ')', n, results)
+
+
+obj = Solution2()
 n = 3
 print(obj.generateParenthesis(n))
