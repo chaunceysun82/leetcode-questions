@@ -5,12 +5,10 @@ class Solution:
     def generateParenthesis(self, n):
 
         output = []
-        queue = ['']
-        index = 0
+        queue = deque([''])
 
-        while index < len(queue):
-            subset = queue[index]
-            index += 1
+        while len(queue) > 0:
+            subset = queue.popleft()
             for c in ['(', ')']:
                 new_subset = subset + c
                 queue.append(new_subset)
@@ -34,9 +32,9 @@ class Solution:
         return len(stack) == 0
 
 
-# obj = Solution()
-# n = 3
-# print(obj.generateParenthesis(n))
+obj = Solution()
+n = 3
+print(obj.generateParenthesis(n))
 
 
 # DFS version check valid during recursion
